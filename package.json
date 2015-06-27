@@ -20,8 +20,16 @@
   "homepage": "https://github.com/juanpiwi/End-to-End#README",
   "author": "",
   "contributors": [
-    {"name": "Juan Pablo Ferrari", "url": "https://github.com/juanpiwi/", "email": "ferrarijuanp@gmail.com"},
-    {"name": "Diego Rodriguez", "url": "https://github.com/Der1906", "email": "drdiegozone@gmail.com"}
+    {
+      "name": "Juan Pablo Ferrari",
+      "url": "https://github.com/juanpiwi/",
+      "email": "ferrarijuanp@gmail.com"
+    },
+    {
+      "name": "Diego Rodriguez",
+      "url": "https://github.com/Der1906",
+      "email": "drdiegozone@gmail.com"
+    }
   ],
   "license": "ISC",
   "devDependencies": {
@@ -29,6 +37,7 @@
     "grunt": "^0.4.5",
     "grunt-jsdoc": "^0.6.7",
     "gulp": "^3.9.0",
+    "gulp-bundle-assets": "^2.21.0",
     "gulp-jshint": "^1.11.0",
     "jshint-stylish": "^2.0.1",
     "mocha": "^2.2.5",
