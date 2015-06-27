@@ -1,0 +1,17 @@
+{
+  "name": "End-to-End",
+  "version": "0.0.0",
+  "homepage": "https://github.com/juanpiwi/End-to-End",
+  "authors": [
+    "kanaima <ferrarijuanp@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "www/lib",
+    "test",
+    "tests"
+  ]
+}
