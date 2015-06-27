@@ -19,6 +19,10 @@
   },
   "homepage": "https://github.com/juanpiwi/End-to-End#README",
   "author": "",
+  "contributors": [
+    {"name": "Juan Pablo Ferrari", "url": "https://github.com/juanpiwi/", "email": "ferrarijuanp@gmail.com"},
+    {"name": "Diego Rodriguez", "url": "https://github.com/Der1906", "email": "drdiegozone@gmail.com"}
+  ],
   "license": "ISC",
   "devDependencies": {
     "chai": "^3.0.0",
