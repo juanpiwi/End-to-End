@@ -3,7 +3,7 @@ var app = angular.module('myApp',['ngRoute']);
 app.config(['$routeProvider',function($routeProvider,$locationProvider){
 	$routeProvider.
 	when('/public',{
-		templateUrl:'views/view.html',
+		templateUrl:'app/views/view.html',
 		controller:'viewController'
 	}).
 	otherwise({
