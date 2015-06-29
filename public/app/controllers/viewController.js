@@ -1,3 +1,3 @@
-app.controller('viewController.js',function($scope,viewService){
+app.controller('viewController',function($scope,viewService){
 	$scope.nombre = viewService.name;
 });
