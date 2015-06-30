@@ -2,11 +2,16 @@ module.exports ={
   bundle: {
     main: {
       scripts: [
-        '/app.js',
-        'controllers/*.js',
-        'services/*.js',
+        './public/app/app.js',
+        './public/app/controllers/*.js',
+        './public/app/services/*.js',
       ],
-      styles: './styles/*.css'
+      styles: './public/styles/*.css',
+      options:{
+        pluginOptions:{
+          'gulp-uglify':{mangle:false}
+        }
+      }
     }
   }
 };
