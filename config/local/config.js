@@ -3,5 +3,6 @@ module.exports = {
   viewCache: false,
   viewStaticFiles: true,
   viewDocumentation: true,
-  environment: 'development'
+  environment: 'development',
+  db: require('./db.js')
 };
