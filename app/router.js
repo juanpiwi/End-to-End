@@ -11,7 +11,7 @@ router.get('/', function(req, res){
   res.sendStatus(403);
 });
 
-//router.get('/test', personaController.find);
+router.post('/register', personaController.post);
 
 
 
