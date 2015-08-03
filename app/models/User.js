@@ -4,8 +4,8 @@ var mongoose = require('../dbConnection.js');
 var Schema = mongoose.Schema;
 
 var UserSchema = new Schema({
-  user: String,
-  password: String
+  user: {type: String, required: true},
+  password: {type: String, required:true}
 });
 
 var User = mongoose.model('User',UserSchema);
