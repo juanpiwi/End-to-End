@@ -15,6 +15,7 @@ router.get('/', function(req, res){
 router.post('/register', personaController.post);
 
 router.post('/users', userController.create);
+router.get('/users/list', userController.read);
 
 
 

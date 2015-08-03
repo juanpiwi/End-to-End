@@ -12,13 +12,25 @@ var userController = {};
     }
     var user = new User(req.body);
     user.save(function(err){
-      console.log('errrr', err)
+
       if(err){
         return next(err);
       }else{
         res.json(user);
       }
     });
+  };
+
+  this.read = function(req, res, next){
+
+    User.find({}, function(err, data){
+      if(err){
+        return next(err);
+      }else{
+        res.json(data);
+      }
+    });
+
   };
 
 }).apply(userController)
