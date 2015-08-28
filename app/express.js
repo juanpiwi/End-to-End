@@ -25,7 +25,7 @@ app.set('view cache', config.viewCache);
 app.use(favicon(path.join(__dirname, '../public/images/favicon.ico')));
 // Here goes the routing for view the statics assets (only if is enabled in configuration file)
 if (config.viewStaticFiles) {
-  app.use('/public', express.static(path.join(__dirname, '../public/')));
+  app.use('/', express.static(path.join(__dirname, '../public/')));
 }
 // Here goes the routing for view the documentation (only if is enabled in configuration file)
 if (config.viewDocumentation) {
