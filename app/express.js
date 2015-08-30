@@ -5,6 +5,7 @@ var path = require('path');
 var favicon = require('serve-favicon');
 var express = require('express');
 var bodyParser = require('body-parser');
+var methodOverride = require('method-override');
 var routes = require('./router');
 
 
@@ -40,6 +41,8 @@ if(config.requestLogConsole) {
 app.use(bodyParser.json()); // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true }));  //This object will contain key-value pairs, where the value can be a string or array
 //app.use(multer()); // for parsing multipart/form-data
+
+app.use(methodOverride());
 
 // ROUTES
 app.use('/', routes);
