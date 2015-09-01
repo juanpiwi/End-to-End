@@ -73,33 +73,42 @@ var userController = {};
     });
   };
 
+  //SIGN UP
+  this.emailSignup = function(req, res){
+    var user = new User({
+      user:    req.body.user,
+      password: 	  req.body.password
+    });
 
-  /*this.create = function(req, res, next){
-   if(req.body.user === undefined || req.body.password === undefined || req.body.user === '' || req.body.password === ''){
-   return res.send('Hay campos vacios');
-   }
-   var user = new User(req.body);
-   user.save(function(err){
+    user.save(function(err, user) {
+      if(err) {
+        return res.send(500, err.message);
+      }
+      res.status(200).jsonp({token: service.createToken(user)});
+    });
 
-   if(err){
-   return next(err);
-   }else{
-   res.json(user);
-   }
-   });
-   };
+  }
 
-   this.read = function(req, res, next){
+  //SIGN IN
+  this.emailLogin = function(req, res){
+    User.findOne({email: req.body.email.toLowerCase()}, function(err, user){
+      if(err){
+        return res.send(500, err.message);
+      }
+      if(user.length > 0 && user.password === req.body.password){
+        return res
+          .status(200)
+          .jsonp({token: service.createToken(user)});
+      }else{
+        return res
+          .status(200)
+          .jsonp({msj: "Invalid"});
+      }
+    })
 
-   User.find({}, function(err, data){
-   if(err){
-   return next(err);
-   }else{
-   res.json(data);
-   }
-   });
+  }
 
-   };*/
+
 
 }).apply(userController)
 
