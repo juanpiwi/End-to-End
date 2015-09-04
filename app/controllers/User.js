@@ -77,7 +77,8 @@ var userController = {};
   this.emailSignup = function(req, res){
     var user = new User({
       user:    req.body.user,
-      password: 	  req.body.password
+      password: 	  req.body.password,
+      email: req.body.email
     });
 
     user.save(function(err, user) {

@@ -4,5 +4,6 @@ module.exports = {
   viewStaticFiles: true,
   viewDocumentation: true,
   environment: 'development',
-  db: require('./db.js')
+  db: require('./db.js'),
+  TOKEN_SECRET: process.env.TOKEN_SECRET || "tokenultrasecreto"
 };
