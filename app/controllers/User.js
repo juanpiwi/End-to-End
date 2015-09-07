@@ -1,6 +1,8 @@
 'use strict';
 
 var User = require('../models/User.js');
+var service = require('../lib/tokenJWT.js');
+
 
 var userController = {};
 
