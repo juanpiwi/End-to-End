@@ -1,17 +1,17 @@
 'use strict';
 
-var User = require('../models/User.js');
-var service = require('../lib/tokenJWT.js');
+const User = require('../models/User.js');
+const service = require('../lib/tokenJWT.js');
 
 
-var userController = {};
+let userController = {};
 
-(function(){
+(function() {
 
   //GET - Return all users in the DB
-  this.findAll = function (req, res){
-    User.find(function(err, users){
-      if(err){
+  this.findAll = function(req, res) {
+    User.find(function(err, users) {
+      if (err) {
         res.send(500, err.message);
       }
       console.log('GET /users');
@@ -20,12 +20,12 @@ var userController = {};
   };
 
   //GET - Return a User with specified ID
-  this.findById = function (req, res){
-    User.findById(req.params.id, function(err, users){
-      if(err){
+  this.findById = function(req, res) {
+    User.findById(req.params.id, function(err, users) {
+      if (err) {
         res.send(500, err.message);
       }
-      console.log('GET /users/',req.params.id);
+      console.log('GET /users/', req.params.id);
       res.status(200).jsonp(users);
     });
   };
@@ -35,13 +35,13 @@ var userController = {};
     console.log('POST');
     console.log(req.body);
 
-    var user = new User({
-      user:    req.body.user,
-      password: 	  req.body.password
+    let user = new User({
+      user: req.body.user,
+      password: req.body.password
     });
 
     user.save(function(err, user) {
-      if(err) {
+      if (err) {
         return res.send(500, err.message);
       }
       res.status(200).jsonp(user);
@@ -51,11 +51,11 @@ var userController = {};
   //PUT - Update a register already exists
   this.update = function(req, res) {
     User.findById(req.params.id, function(err, user) {
-      user.user   = req.body.user;
-      user.password    = req.body.password;
+      user.user = req.body.user;
+      user.password = req.body.password;
 
       user.save(function(err) {
-        if(err){
+        if (err) {
           return res.send(500, err.message);
         }
         res.status(200).jsonp(user);
@@ -67,7 +67,7 @@ var userController = {};
   this.delete = function(req, res) {
     User.findById(req.params.id, function(err, user) {
       user.remove(function(err) {
-        if(err) {
+        if (err) {
           return res.send(500, err.message);
         }
         res.status(200);
@@ -76,36 +76,44 @@ var userController = {};
   };
 
   //SIGN UP
-  this.emailSignup = function(req, res){
-    var user = new User({
-      user:    req.body.user,
-      password: 	  req.body.password,
+  this.emailSignup = function(req, res) {
+    let user = new User({
+      user: req.body.user,
+      password: req.body.password,
       email: req.body.email
     });
 
     user.save(function(err, user) {
-      if(err) {
+      if (err) {
         return res.send(500, err.message);
       }
-      res.status(200).jsonp({token: service.createToken(user)});
+      res.status(200).jsonp({
+        token: service.createToken(user)
+      });
     });
 
-  }
+  };
 
   //SIGN IN
-  this.emailLogin = function(req, res){
-    User.findOne({email: req.body.email.toLowerCase()}, function(err, user){
-      if(err){
+  this.emailLogin = function(req, res) {
+    User.findOne({
+      email: req.body.email.toLowerCase()
+    }, function(err, user) {
+      if (err) {
         return res.send(500, err.message);
       }
-      if(user.length > 0 && user.password === req.body.password){
+      if (user.length > 0 && user.password === req.body.password) {
         return res
           .status(200)
-          .jsonp({token: service.createToken(user)});
-      }else{
+          .jsonp({
+            token: service.createToken(user)
+          });
+      } else {
         return res
           .status(200)
-          .jsonp({msj: "Invalid"});
+          .jsonp({
+            msj: "Invalid"
+          });
       }
     })
 

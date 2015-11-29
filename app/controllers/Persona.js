@@ -1,18 +1,23 @@
 'use strict';
 
-var Persona = require('../models/Persona');
+const Persona = require('../models/Persona');
 
-var persona = {};
+let persona = {};
 
-(function(){
+(function() {
   //Create public method POST,
   //---create a person---.
-  this.post = function(req,res){
-     Persona.create({'nombre':req.body.nombre,'apellido':req.body.apellido},function(err){
-       if(err)
-          res.send(err);
-       res.json({message:'Persona registrada'});
-     });
+  this.post = function(req, res) {
+    Persona.create({
+      'nombre': req.body.nombre,
+      'apellido': req.body.apellido
+    }, function(err) {
+      if (err)
+        res.send(err);
+      res.json({
+        message: 'Persona registrada'
+      });
+    });
   };
 
 }).apply(persona);

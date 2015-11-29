@@ -1,10 +1,10 @@
-var config = require('./../config/config');
-var  express = require('express');
-var router = express.Router();
+const config = require('./../config/config');
+const express = require('express');
+const router = express.Router();
 
-var personaController = require('../app/controllers/Persona');
-var userController = require('../app/controllers/User');
-var token = require('../app/lib/tokenJWT.js');
+const personaController = require('../app/controllers/Persona');
+const userController = require('../app/controllers/User');
+const token = require('../app/lib/tokenJWT.js');
 
 /**
  * Method that contains the HTTP method GET for the root of the app
@@ -35,7 +35,7 @@ router.route('/auth/signup', userController.emailSignup);
 router.route('/auth/login', userController.emailLogin);
 
 //Ruta solo accesible si se esta logueado
-router.get('/private', token.ensureAuthenticated,function(req, res){
+router.get('/private', token.ensureAuthenticated, function(req, res) {
   console.log('Hola soy privado');
 });
 

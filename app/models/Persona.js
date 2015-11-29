@@ -1,13 +1,13 @@
 'use strict';
 
-var mongoose = require('../dbConnection.js');
-var Schema = mongoose.Schema;
+const mongoose = require('../dbConnection.js');
+const Schema = mongoose.Schema;
 
 
-var PersonaSchema = new Schema({
+let PersonaSchema = new Schema({
   nombre: String,
   apellido: String
 });
 
-var Persona = mongoose.model('Persona', PersonaSchema);
+let Persona = mongoose.model('Persona', PersonaSchema);
 module.exports = Persona;

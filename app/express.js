@@ -1,19 +1,19 @@
 'use strict';
 
-var config = require('./../config/config');
-var path = require('path');
-var favicon = require('serve-favicon');
-var express = require('express');
-var bodyParser = require('body-parser');
-var methodOverride = require('method-override');
-var routes = require('./router');
+const config = require('./../config/config');
+const path = require('path');
+const favicon = require('serve-favicon');
+const express = require('express');
+const bodyParser = require('body-parser');
+const methodOverride = require('method-override');
+const routes = require('./router');
 
 
 /**
  * This object is the specification of the server. Executes express and configures all settings, middlewares & routes controllers
  * @type {express}
  */
-var app = express();
+const app = express();
 
 
 // SETTINGS
@@ -33,13 +33,15 @@ if (config.viewDocumentation) {
   app.use('/doc', express.static(path.join(__dirname, '../doc/')));
 }
 // Show log of all requests on the console
-if(config.requestLogConsole) {
-  var morgan = require('morgan');
+if (config.requestLogConsole) {
+  const morgan = require('morgan');
   app.use(morgan('dev'));
 }
 // Parsers
 app.use(bodyParser.json()); // for parsing application/json
-app.use(bodyParser.urlencoded({ extended: true }));  //This object will contain key-value pairs, where the value can be a string or array
+app.use(bodyParser.urlencoded({
+  extended: true
+})); //This object will contain key-value pairs, where the value can be a string or array
 //app.use(multer()); // for parsing multipart/form-data
 
 app.use(methodOverride());
