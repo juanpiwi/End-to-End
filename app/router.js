@@ -35,7 +35,7 @@ router.route('/auth/signup', userController.emailSignup);
 router.route('/auth/login', userController.emailLogin);
 
 //Ruta solo accesible si se esta logueado
-router.get('/private', token.ensureAuthenticated, function(req, res) {
+router.get('/private', token.ensureAuthenticated, (req, res) => {
   console.log('Hola soy privado');
 });
 

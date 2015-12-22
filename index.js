@@ -5,11 +5,8 @@
  * @requires config:config
  * @requires app:express
  */
-const config = require('./config/config');
-const server = require('./app/express');
+const config = require('config/config');
+const server = require('app/express');
 
 
-
-server.listen(config.port, function() {
-  console.log('listen port ' + config.port);
-});
+server.listen(config.port, () => {console.log('listen port ' + config.port);})

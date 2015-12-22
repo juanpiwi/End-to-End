@@ -24,10 +24,12 @@ app.set('view cache', config.viewCache);
 // MIDDLEWARES
 //favicon in /public
 app.use(favicon(path.join(__dirname, '../public/images/favicon.ico')));
+
 // Here goes the routing for view the statics assets (only if is enabled in configuration file)
 if (config.viewStaticFiles) {
   app.use('/', express.static(path.join(__dirname, '../public/')));
 }
+
 // Here goes the routing for view the documentation (only if is enabled in configuration file)
 if (config.viewDocumentation) {
   app.use('/doc', express.static(path.join(__dirname, '../doc/')));
@@ -39,6 +41,7 @@ if (config.requestLogConsole) {
 }
 // Parsers
 app.use(bodyParser.json()); // for parsing application/json
+
 app.use(bodyParser.urlencoded({
   extended: true
 })); //This object will contain key-value pairs, where the value can be a string or array
