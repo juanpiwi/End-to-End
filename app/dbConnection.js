@@ -5,6 +5,9 @@ const config = require('../config/config');
 const mongoUrl = 'mongodb://' + config.db.host + ':' + config.db.port + '/' +
   config.db.dbName;
 
+
+//mongoose.on('error', () => {});
+
 let conectWithRetry = function() {
   return mongoose.connect(mongoUrl, function(err) {
     if (err) {

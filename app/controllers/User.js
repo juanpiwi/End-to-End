@@ -9,10 +9,10 @@ let userController = {};
 (function() {
 
   //GET - Return all users in the DB
-  this.findAll = function(req, res) {
-    User.find(function(err, users) {
+  this.findAll = (req, res) => {
+    User.find((err, users) => {
       if (err) {
-        res.send(500, err.message);
+        res.sendStatus(500).jsonp(err);
       }
       console.log('GET /users');
       res.status(200).jsonp(users);
@@ -20,10 +20,10 @@ let userController = {};
   };
 
   //GET - Return a User with specified ID
-  this.findById = function(req, res) {
-    User.findById(req.params.id, function(err, users) {
+  this.findById = (req, res) => {
+    User.findById(req.params.id, (err, users) => {
       if (err) {
-        res.send(500, err.message);
+        res.sendStatus(500).jsonp(err);
       }
       console.log('GET /users/', req.params.id);
       res.status(200).jsonp(users);
@@ -31,7 +31,7 @@ let userController = {};
   };
 
   //POST - Insert a new User in the DB
-  this.add = function(req, res) {
+  this.add = (req, res) => {
     console.log('POST');
     console.log(req.body);
 
@@ -40,23 +40,23 @@ let userController = {};
       password: req.body.password
     });
 
-    user.save(function(err, user) {
+    user.save((err, user) => {
       if (err) {
-        return res.send(500, err.message);
+        return res.sendStatus(500).jsonp(err);
       }
       res.status(200).jsonp(user);
     });
   };
 
   //PUT - Update a register already exists
-  this.update = function(req, res) {
-    User.findById(req.params.id, function(err, user) {
+  this.update = (req, res) => {
+    User.findById(req.params.id, (err, user) => {
       user.user = req.body.user;
       user.password = req.body.password;
 
-      user.save(function(err) {
+      user.save((err) => {
         if (err) {
-          return res.send(500, err.message);
+          return res.sendStatus(500).jsonp(err);
         }
         res.status(200).jsonp(user);
       });
@@ -64,11 +64,11 @@ let userController = {};
   };
 
   //DELETE - Delete a User with specified ID
-  this.delete = function(req, res) {
-    User.findById(req.params.id, function(err, user) {
-      user.remove(function(err) {
+  this.delete = (req, res) => {
+    User.findById(req.params.id, (err, user) => {
+      user.remove((err) => {
         if (err) {
-          return res.send(500, err.message);
+          return res.sendStatus(500).jsonp(err);
         }
         res.status(200);
       })
@@ -76,16 +76,16 @@ let userController = {};
   };
 
   //SIGN UP
-  this.emailSignup = function(req, res) {
+  this.emailSignup = (req, res) => {
     let user = new User({
       user: req.body.user,
       password: req.body.password,
       email: req.body.email
     });
 
-    user.save(function(err, user) {
+    user.save((err, user) => {
       if (err) {
-        return res.send(500, err.message);
+        return res.sendStatus(500).jsonp(err);
       }
       res.status(200).jsonp({
         token: service.createToken(user)
@@ -95,12 +95,12 @@ let userController = {};
   };
 
   //SIGN IN
-  this.emailLogin = function(req, res) {
+  this.emailLogin = (req, res) => {
     User.findOne({
       email: req.body.email.toLowerCase()
-    }, function(err, user) {
+    }, (err, user) => {
       if (err) {
-        return res.send(500, err.message);
+        return res.sendStatus(500).jsonp(err);;
       }
       if (user.length > 0 && user.password === req.body.password) {
         return res
